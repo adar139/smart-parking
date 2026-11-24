@@ -1,0 +1,17 @@
+
+services:
+  web:
+    build: ./web
+    container_name: parking-web
+    ports:
+      - "8080:80"
+    depends_on:
+      - storage
+
+  storage:
+    build: ./storage
+    container_name: parking-storage
+    ports:
+      - "8081:80"
+    volumes:
+      - ./storage/images:/usr/local/apache2/htdocs/images:ro
